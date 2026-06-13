@@ -1,19 +1,6 @@
 import { getDocument, getReadme, getSummary, meta } from "./docs.ts";
 import { tmpl } from "./tmpl.ts";
 
-Bun.serve({
-    async fetch(request: Request) {
-        const url = new URL(request.url);
-        const pathname = url.pathname;
-        const summary = await getSummary();
-        const content = pathname === "/" ? await getReadme() : await getDocument(pathname);
-
-        return new Response(render(tmpl, { meta, summary, content }), {
-            headers: { "Content-Type": "text/html; charset=utf-8" },
-        });
-    },
-});
-
 function render(template: string, data: Record<string, unknown>): string {
     return template.replace(/\{\{= ([^}]+)\}\}/g, (_, expr: string) => {
         try {
@@ -25,3 +12,16 @@ function render(template: string, data: Record<string, unknown>): string {
         }
     });
 }
+
+async function fetch(request: Request) {
+    const url = new URL(request.url);
+    const pathname = url.pathname;
+    const summary = await getSummary();
+    const content = pathname === "/" ? await getReadme() : await getDocument(pathname);
+
+    return new Response(render(tmpl, { meta, summary, content }), {
+        headers: { "Content-Type": "text/html; charset=utf-8" },
+    });
+}
+
+export default { fetch };

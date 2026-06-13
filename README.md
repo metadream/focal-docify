@@ -1,8 +1,9 @@
 # Focal-Docify
 
-A super easy-to-use markdown document preview framework for Bun.
+A super easy-to-use markdown document preview framework for Bun.  
+Write markdown, get a beautiful documentation site.
 
-## Usage
+## Quick Start
 
 1. Install dependency:
 
@@ -10,20 +11,16 @@ A super easy-to-use markdown document preview framework for Bun.
 bunx jsr add @focal/docify
 ```
 
-2. Create a start file with any name (ex. `start.ts`) in your document folder
-   root. The content of the file is as follows:
+2. Create `index.ts` in your document root:
 
 ```typescript
-// start.ts
-import "@focal/docify";
+export { default } from "@focal/docify";
 ```
 
-3. Create `SUMMARY.md` and `README.md` in your document folder root. The
-   contents of the summary will be rendered in the left navigation side of the
-   page, and README file will be used as homepage content.
+3. Create `SUMMARY.md` and `README.md`:
 
-   A typical `SUMMARY.md` contains the following content. Among them, metadata
-   between `---` and first-level title are not required.
+   `SUMMARY.md` defines the left navigation sidebar. `README.md` is the
+   homepage. Metadata between `---` is optional.
 
 ```markdown
 ---
@@ -44,8 +41,8 @@ footer: Copyright (c) 2023
 - [Methods](/folder2/methods.md)
 ```
 
-3. Create markdown files with corresponding names under folder1 and folder2. The
-   final directory structure is as follows:
+4. Create markdown files under subdirectories:
+
    ```
    ├─ folder1
    │   └─ installation.md
@@ -54,11 +51,34 @@ footer: Copyright (c) 2023
    │   └─ methods.md
    ├─ README.md
    ├─ SUMMARY.md
-   └─ start.ts
+   └─ index.ts
    ```
 
-4. Run start file.
+5. Start the dev server:
 
 ```bash
-bun start.ts
+bun run index.ts
+```
+
+Bun automatically starts the server when it detects `export default { fetch }`.
+
+## Deploy to Vercel
+
+Push to GitHub, import to Vercel, done. No extra configuration needed.
+
+Vercel reads the exported `fetch` handler directly — no `Bun.serve()` call
+involved, so there is no port conflict in the serverless environment. Markdown
+files are included via the framework preset automatically.
+
+A minimal `vercel.json` is optional (adds `includeFiles` for markdown):
+
+```json
+{
+    "bunVersion": "1.x",
+    "functions": {
+        "index.ts": {
+            "includeFiles": "{**/*.md,package.json}"
+        }
+    }
+}
 ```
