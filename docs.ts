@@ -51,6 +51,15 @@ function parse(text: string) {
         meta = Bun.YAML.parse(match[1]);
         text = text.replace(match[0], "");
     }
-    const content = Bun.markdown.html(text);
+    const content = Bun.markdown.html(text, {
+        tables: true,
+        strikethrough: true,
+        tasklists: true,
+        autolinks: true,
+        headings: true,
+        latexMath: true,
+        noHtmlBlocks: false,
+        noHtmlSpans: false,
+    });
     return { meta, content };
 }

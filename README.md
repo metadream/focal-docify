@@ -4,15 +4,21 @@ A super easy-to-use markdown document preview framework for Bun.
 
 ## Usage
 
-1. Create a start file with any name (ex. `start.ts`) in your document folder
+1. Install dependency:
+
+```bash
+bunx jsr add @focal/docify
+```
+
+2. Create a start file with any name (ex. `start.ts`) in your document folder
    root. The content of the file is as follows:
 
 ```typescript
 // start.ts
-import "jsr:@focal/docify";
+import "@focal/docify";
 ```
 
-2. Create `SUMMARY.md` and `README.md` in your document folder root. The
+3. Create `SUMMARY.md` and `README.md` in your document folder root. The
    contents of the summary will be rendered in the left navigation side of the
    page, and README file will be used as homepage content.
 
