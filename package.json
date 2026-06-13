@@ -1,6 +1,6 @@
 {
   "name": "focal-docify",
-  "version": "1.1.5",
+  "version": "1.1.4",
   "license": "MIT",
   "description": "A super easy-to-use markdown document preview framework for Bun.",
   "repository": "https://github.com/metadream/focal-docify.git",
