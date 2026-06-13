@@ -1,4 +1,4 @@
-# Deno-Docify
+# Focal-Docify
 
 A super easy-to-use markdown document preview framework for Bun.
 
