@@ -13,7 +13,7 @@ function render(template: string, data: Record<string, unknown>): string {
     });
 }
 
-async function fetch(request: Request): Promise<Response> {
+async function fetch(request: Request) {
     const url = new URL(request.url);
     const pathname = url.pathname;
     const summary = await getSummary();
