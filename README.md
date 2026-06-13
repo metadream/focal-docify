@@ -1,7 +1,6 @@
 # Focal-Docify
 
-A super easy-to-use markdown document preview framework for Bun.  
-Write markdown, get a beautiful documentation site.
+A super easy-to-use markdown document preview framework for Bun. Write markdown, get a beautiful documentation site. [Demo](https://docify-demo.vercel.app)
 
 ## Quick Start
 
