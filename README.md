@@ -1,11 +1,6 @@
 # Deno-Docify
 
-A super easy-to-use markdown document preview framework in Deno.
-
-## Example
-
-- Demo: https://docify.deno.dev
-- Source: https://github.com/metadream/tech-docs
+A super easy-to-use markdown document preview framework for Bun.
 
 ## Usage
 
@@ -14,17 +9,7 @@ A super easy-to-use markdown document preview framework in Deno.
 
 ```typescript
 // start.ts
-import "jsr:@focal/docify@1.0.10";
-```
-
-Add a `deno.json` file in the same directory with the following content:
-```json
-{
-  "compilerOptions": {
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-  }
-}
+import "jsr:@focal/docify";
 ```
 
 2. Create `SUMMARY.md` and `README.md` in your document folder root. The
@@ -69,5 +54,5 @@ footer: Copyright (c) 2023
 4. Run start file.
 
 ```bash
-deno run --allow-net --allow-read start.ts
+bun start.ts
 ```
