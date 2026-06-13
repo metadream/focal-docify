@@ -34,8 +34,8 @@ export async function getDocument(path: string) {
             if (path == SUMMARY) {
                 Object.assign(meta, markup.meta);
             } else {
-                const match = (await markup.content).match(/<h1.*>(.+)<\/h1>/);
-                if (match) meta.title = match[1];
+                const match = (await markup.content).match(/<h1[^>]*>([\s\S]+?)<\/h1>/);
+                if (match) meta.title = match[1].replace(/<[^>]+>/g, "");
             }
         } catch (e) {
             throw e;
